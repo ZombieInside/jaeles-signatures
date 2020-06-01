@@ -7,11 +7,8 @@ info:
 
 variables:
   - gitfile: |
-      .git/HEAD
-      .git/config
-      .git/logs/HEAD
-      .git/refs/tags
-      .gitignore.swp
+      _debugbar/open
+      __clockwork/app
 requests:
   - method: GET
     redirect: false
@@ -19,9 +16,7 @@ requests:
       {{.BaseURL}}/{{.gitfile}}
     detections:
       - >-
-        StatusCode() == 200 && StringSearch("response","ref: refs")
-      - >-
-        StatusCode() == 200 && StringSearch("response","[remote ") && StringSearch("response","[branch ")
+        StatusCode() == 200
 
 reference:
   - author: 0xd0ff9
